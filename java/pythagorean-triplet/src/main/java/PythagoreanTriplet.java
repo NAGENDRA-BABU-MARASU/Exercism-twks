@@ -23,7 +23,6 @@ class PythagoreanTriplet {
     }
 
 
-
     static TripletListBuilder makeTripletsList() {
         return new TripletListBuilder();
     }
@@ -31,6 +30,7 @@ class PythagoreanTriplet {
     static class TripletListBuilder {
         int sum;
         int maxFactor = Integer.MAX_VALUE;
+
         TripletListBuilder thatSumTo(int sum) {
             this.sum = sum;
             return this;
@@ -49,23 +49,23 @@ class PythagoreanTriplet {
 
 
         private void findAllValidPythagoreanTriplets(List<PythagoreanTriplet> tripletsList) {
-            for(int a = 1; a <= sum/3; a++){
-                if(a <= maxFactor) {
-                    for(int b = a+1; b <= sum/2; b++){
-                        if(b <=maxFactor){
-                            int c = sum - a - b;
-                            if(c <=maxFactor){
-                                int aSquare = a*a;
-                                int bSquare = b*b;
-                                int cSquare = c*c;
-                                if(aSquare + bSquare == cSquare){
-                                    tripletsList.add(new PythagoreanTriplet(a,b,c));
-                                }
-                            }
+            for (int a = 1; a <= sum / 3 && a <= maxFactor; a++) {
+                for (int b = a + 1; b <= sum / 2 && b <= maxFactor; b++) {
+                    int c = sum - a - b;
+                    if (c <= maxFactor) {
+                        if (isPythagoreanTriplet(a,b,c)) {
+                            tripletsList.add(new PythagoreanTriplet(a, b, c));
                         }
                     }
                 }
             }
+        }
+
+        private static boolean isPythagoreanTriplet(int a, int b, int c) {
+            int aSquare = a*a;
+            int bSquare = b*b;
+            int cSquare = c*c;
+            return aSquare + bSquare == cSquare;
         }
 
     }
