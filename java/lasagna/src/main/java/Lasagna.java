@@ -1,12 +1,13 @@
 public class Lasagna {
+    public static final int EXPECTED_MINUTES_INSIDE_OVEN = 40;
+
     public int expectedMinutesInOven(){
-        int expectedMinutesInsideOven = 40;
-        return expectedMinutesInsideOven;
+        return EXPECTED_MINUTES_INSIDE_OVEN;
     }
 
 
     public int remainingMinutesInOven(int actualMinutesInOven) {
-        return expectedMinutesInOven() - actualMinutesInOven;
+        return EXPECTED_MINUTES_INSIDE_OVEN - actualMinutesInOven;
     }
 
     public int preparationTimeInMinutes(int numberOfLayers) {
@@ -16,6 +17,5 @@ public class Lasagna {
 
     public int totalTimeInMinutes(int numberOfLayers, int minutesInLasagna){
         return preparationTimeInMinutes(numberOfLayers) + minutesInLasagna;
-
     }
 }
