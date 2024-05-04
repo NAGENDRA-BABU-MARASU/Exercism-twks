@@ -2,55 +2,47 @@ import java.lang.reflect.Array;
 import java.util.NoSuchElementException;
 
 class SimpleLinkedList<T> {
-    Node<T> head;
-    int size;
+    private Node<T> head;
+    private int length;
+
     SimpleLinkedList() {
         head = null;
-        size = 0;
+        length = 0;
     }
 
     SimpleLinkedList(T[] values) {
         Node<T> linkedListIterator = null;
-        for(T value: values) {
-           if(head == null) {
-               head = new Node<T>(value);
-               linkedListIterator = head;
-           } else {
-               linkedListIterator.next = new Node<T>(value);
-               linkedListIterator = linkedListIterator.next;
-           }
-           size++;
+        for (T value : values) {
+            if (head == null) {
+                head = new Node<T>(value);
+                linkedListIterator = head;
+            } else {
+                linkedListIterator.next = new Node<T>(value);
+                linkedListIterator = linkedListIterator.next;
+            }
+            length++;
         }
     }
 
     void push(T value) {
         Node<T> linkedListIterator = head;
-        /*if(linkedList == null) {
-            linkedList = new Node<T>(value);
-        } else {
-            while(linkedListIterator.next != null ){
-                linkedListIterator = linkedListIterator.next;
-            }
-            linkedListIterator.next = new Node<T>(value);
-        }*/
-        if(head == null){
+        if (head == null) {
             head = new Node<T>(value);
         } else {
             Node<T> newNode = new Node<T>(value);
             newNode.next = head;
             head = newNode;
         }
-        size++;
+        length++;
     }
 
     T pop() {
-        if(size == 0){
+        if (length == 0) {
             throw new NoSuchElementException();
-        }
-        else {
+        } else {
             T element = head.getElement();
             head = head.next;
-            size--;
+            length--;
             return element;
         }
     }
@@ -59,7 +51,7 @@ class SimpleLinkedList<T> {
         Node<T> next = head.next;
         Node<T> prev = null;
         head.next = prev;
-        while(next != null){
+        while (next != null) {
             prev = head;
             head = next;
             next = next.next;
@@ -68,20 +60,10 @@ class SimpleLinkedList<T> {
     }
 
     T[] asArray(Class<T> clazz) {
-        /*
-        ArrayList<T> valuesArrayList = new ArrayList<>();
-        Node<T> linkedListIterator = linkedList;
-        while(linkedListIterator != null) {
-            valuesArrayList.add(linkedListIterator.getElement());
-            linkedListIterator = linkedListIterator.next;
-        }
-        System.out.println(valuesArrayList);
-        return (T[]) valuesArrayList.toArray();
-        */
-        T[] valuesArray = (T[])Array.newInstance(clazz, size);
+        T[] valuesArray = (T[]) Array.newInstance(clazz, length);
         Node<T> linkedListIterator = head;
         int index = 0;
-        while(linkedListIterator != null) {
+        while (linkedListIterator != null) {
             valuesArray[index] = linkedListIterator.getElement();
             linkedListIterator = linkedListIterator.next;
             index++;
@@ -90,7 +72,6 @@ class SimpleLinkedList<T> {
     }
 
     int size() {
-        return this.size;
+        return this.length;
     }
-
 }
