@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RnaTranscriptionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-04-18T03:01:17" hostname="LAPTOP-FNJ95PF2" time="0.061">
+<testsuite name="RnaTranscriptionTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-05-04T02:08:47" hostname="LAPTOP-FNJ95PF2" time="0.079">
   <properties/>
-  <testcase name="testRnaTranscriptionOfThymineIsAdenine()" classname="RnaTranscriptionTest" time="0.046"/>
+  <testcase name="testRnaTranscriptionOfThymineIsAdenine()" classname="RnaTranscriptionTest" time="0.061"/>
   <testcase name="testRnaTranscription()" classname="RnaTranscriptionTest" time="0.001"/>
   <testcase name="testRnaTranscriptionOfCytosineIsGuanine()" classname="RnaTranscriptionTest" time="0.001"/>
-  <testcase name="testEmptyRnaSequence()" classname="RnaTranscriptionTest" time="0.001"/>
-  <testcase name="testRnaTranscriptionOfGuanineIsCytosine()" classname="RnaTranscriptionTest" time="0.001"/>
-  <testcase name="testRnaTranscriptionOfAdenineIsUracil()" classname="RnaTranscriptionTest" time="0.001"/>
+  <testcase name="testEmptyRnaSequence()" classname="RnaTranscriptionTest" time="0.002"/>
+  <testcase name="testRnaTranscriptionOfGuanineIsCytosine()" classname="RnaTranscriptionTest" time="0.003"/>
+  <testcase name="testRnaTranscriptionOfAdenineIsUracil()" classname="RnaTranscriptionTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

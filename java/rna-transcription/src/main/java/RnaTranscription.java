@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 class RnaTranscription {
 
-    private HashMap<String, Character> nucleotideMappings = new HashMap<>();
+    private final HashMap<String, Character> nucleotideMappings = new HashMap<>();
 
     public RnaTranscription() {
         nucleotideMappings.put("adenine", 'A');
@@ -15,37 +15,23 @@ class RnaTranscription {
     String transcribe(String dnaStrand) {
         StringBuilder rnaBuilder = new StringBuilder();
 
-        for(Character dnaNucleotide: dnaStrand.toCharArray()){
-            if(dnaNucleotide.equals(nucleotideMappings.get("cytosine"))){
-                rnaBuilder.append(transcribeCytosineToGuanine());
-            }
-            else if(dnaNucleotide.equals(nucleotideMappings.get("guanine"))) {
-                rnaBuilder.append(transcribeGuanineToCytosine());
-            }
-            else if(dnaNucleotide.equals(nucleotideMappings.get("thymine"))) {
-                rnaBuilder.append(transcribeThymineToAdenine());
-            }
-            else if(dnaNucleotide.equals(nucleotideMappings.get("adenine"))) {
-                rnaBuilder.append(transcribeAdenineToUracil());
+        for (Character dnaNucleotide : dnaStrand.toCharArray()) {
+            switch (dnaNucleotide) {
+                case 'C':
+                    rnaBuilder.append(nucleotideMappings.get("guanine"));
+                    break;
+                case 'G':
+                    rnaBuilder.append(nucleotideMappings.get("cytosine"));
+                    break;
+                case 'T':
+                    rnaBuilder.append(nucleotideMappings.get("adenine"));
+                    break;
+                case 'A':
+                    rnaBuilder.append(nucleotideMappings.get("uracil"));
+                    break;
             }
         }
         return rnaBuilder.toString();
-    }
-
-    private Character transcribeAdenineToUracil() {
-        return nucleotideMappings.get("uracil");
-    }
-
-    private Character transcribeThymineToAdenine() {
-        return nucleotideMappings.get("adenine");
-    }
-
-    private Character transcribeGuanineToCytosine() {
-        return nucleotideMappings.get("cytosine");
-    }
-
-    private Character transcribeCytosineToGuanine(){
-        return nucleotideMappings.get("guanine");
     }
 
 }
